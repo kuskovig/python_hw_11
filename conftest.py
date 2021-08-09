@@ -1,5 +1,5 @@
 import pytest
-from locators import OpencartUrls
+from page_objects.locators import OpencartUrls
 from selenium import webdriver
 
 YANDEX_DRIVER_PATH = "C:\webdrivers\yandexdriver.exe"
