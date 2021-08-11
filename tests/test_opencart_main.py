@@ -7,7 +7,7 @@ import random
 
 def test_opens_mainpage_with_default_url(browser, url):
     browser.get(url)
-    assert browser.title == "Your Store", "Wrong title of the page"
+    assert browser.title == "Your Store", "Wrong title of the  main page"
 
 
 def test_there_is_slideshow(browser, url):
@@ -58,6 +58,16 @@ def test_presence_of_language_selector(browser, url):
     try:
         WebDriverWait(browser, 2). \
             until_not(EC.presence_of_element_located(OpencartMainPageLocators.MAIN_PAGE_LANGUAGE_SELECTOR))
+    except TimeoutException:
+        return False
+    return True
+
+
+def test_presence_of_search_button(browser, url):
+    browser.get(url)
+    try:
+        WebDriverWait(browser, 2). \
+            until_not(EC.presence_of_element_located(OpencartMainPageLocators.SEARCH_BAR_SEARCH_BUTTON))
     except TimeoutException:
         return False
     return True

@@ -1,5 +1,5 @@
 import pytest
-from page_objects.locators import OpencartUrls
+from page_objects.locators import OpencartMainPageLocators
 from selenium import webdriver
 
 YANDEX_DRIVER_PATH = "C:\webdrivers\yandexdriver.exe"
@@ -12,7 +12,7 @@ def pytest_addoption(parser):
                      default="chrome")
     parser.addoption("--url",
                      action="store",
-                     default=OpencartUrls.OPENCART_MAIN_URL)
+                     default=OpencartMainPageLocators.OPENCART_BASE_URL)
 
 
 @pytest.fixture()
