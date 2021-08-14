@@ -2,13 +2,11 @@ import pytest
 from page_objects.locators import OpencartMainPageLocators
 from selenium import webdriver
 
-YANDEX_DRIVER_PATH = "C:\webdrivers\yandexdriver.exe"
-
 
 def pytest_addoption(parser):
     parser.addoption("--browser",
                      action="store",
-                     choices=["chrome", "firefox", "opera", "edge", "yandex"],
+                     choices=["chrome", "firefox", "opera", "edge"],
                      default="chrome")
     parser.addoption("--url",
                      action="store",
@@ -36,10 +34,6 @@ def browser(request):
         driver = webdriver.Opera()
     elif choice == "edge":
         driver = webdriver.Edge()
-    elif choice == "yandex":
-        options = webdriver.ChromeOptions()
-        driver = webdriver.Chrome(YANDEX_DRIVER_PATH, options=options)
 
     request.addfinalizer(teardown)
     return driver
-

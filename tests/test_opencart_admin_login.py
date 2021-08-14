@@ -13,47 +13,42 @@ def test_presence_of_login_button(browser, url):
     browser.get(url + OpencartAdminLoginLocators.ADMINPAGE_RELATIVE_URL)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartAdminLoginLocators.ADMINPAGE_LOGIN_BUTTON))
+            until(EC.presence_of_element_located(OpencartAdminLoginLocators.ADMINPAGE_LOGIN_BUTTON))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
 
 
 def test_presence_of_forgotten_password_link(browser, url):
     browser.get(url + OpencartAdminLoginLocators.ADMINPAGE_RELATIVE_URL)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartAdminLoginLocators.ADMINPAGE_LOGIN_BUTTON))
+            until(EC.presence_of_element_located(OpencartAdminLoginLocators.FORGOTTEN_PASSWORD_LINK))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
 
 
 def test_presence_of_username_input_field(browser, url):
     browser.get(url + OpencartAdminLoginLocators.ADMINPAGE_RELATIVE_URL)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartAdminLoginLocators.INPUT_USERNAME))
+            until(EC.presence_of_element_located(OpencartAdminLoginLocators.INPUT_USERNAME))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
 
 
 def test_presence_of_password_input_field(browser, url):
     browser.get(url + OpencartAdminLoginLocators.ADMINPAGE_RELATIVE_URL)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartAdminLoginLocators.INPUT_PASSWORD))
+            until(EC.presence_of_element_located(OpencartAdminLoginLocators.INPUT_PASSWORD))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
 
 
 def test_presence_of_header_logo(browser, url):
     browser.get(url + OpencartAdminLoginLocators.ADMINPAGE_RELATIVE_URL)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartAdminLoginLocators.HEADER_LOGO))
+            until(EC.presence_of_element_located(OpencartAdminLoginLocators.HEADER_LOGO))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")

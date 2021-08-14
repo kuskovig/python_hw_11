@@ -16,8 +16,7 @@ def test_there_is_slideshow(browser, url):
         WebDriverWait(browser, 2). \
             until(EC.presence_of_element_located(OpencartMainPageLocators.MAIN_PAGE_SLIDESHOW))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after ")
 
 
 def test_alert_correctly_closes(browser, url):
@@ -32,42 +31,38 @@ def test_alert_correctly_closes(browser, url):
         alert_close_button = WebDriverWait(browser, 2). \
             until(EC.presence_of_element_located(OpencartMainPageLocators.WISHLIST_ATTEMPT_ALERT_CLOSE))
     except TimeoutException:
-        return False
+        raise AssertionError("Couldn't find element after 2 seconds")
     alert_close_button.click()
     # asserting that alert correctly closed
     try:
         WebDriverWait(browser, 2). \
             until_not(EC.presence_of_element_located(OpencartMainPageLocators.WISHLIST_ATTEMPT_ALERT))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Element didn't disappear after 2 seconds")
 
 
 def test_presence_of_cart_button(browser, url):
     browser.get(url)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartMainPageLocators.MAIN_PAGE_CART_BUTTON))
+            until(EC.presence_of_element_located(OpencartMainPageLocators.MAIN_PAGE_CART_BUTTON))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
 
 
-def test_presence_of_language_selector(browser, url):
+def test_presence_of_currency_selector(browser, url):
     browser.get(url)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartMainPageLocators.MAIN_PAGE_LANGUAGE_SELECTOR))
+            until(EC.presence_of_element_located(OpencartMainPageLocators.MAIN_PAGE_CURRENCY_SELECTOR))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
 
 
 def test_presence_of_search_button(browser, url):
     browser.get(url)
     try:
         WebDriverWait(browser, 2). \
-            until_not(EC.presence_of_element_located(OpencartMainPageLocators.SEARCH_BAR_SEARCH_BUTTON))
+            until(EC.presence_of_element_located(OpencartMainPageLocators.SEARCH_BAR_SEARCH_BUTTON))
     except TimeoutException:
-        return False
-    return True
+        raise AssertionError("Couldn't find element after 2 seconds")
